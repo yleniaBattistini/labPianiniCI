@@ -3,3 +3,6 @@ language: java
 git:
   depth: false
   autocrlf: input
+
+script:
+  - sh gradlew check
