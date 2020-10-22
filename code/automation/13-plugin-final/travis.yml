@@ -1,8 +1,26 @@
-language: java
+language: minimal
 
 git:
   depth: false
   autocrlf: input
 
+os:
+  - linux
+  - usx
+
+env:
+  global:
+    - GRAVIS_REPO="https://github.com/DanySK/Gravis-CI.git"
+    - GRAVIS="$HOME/gravis"
+    - JDK="adopt-openj9@1.11"
+    -
+before_install:
+  - travis_retry git clone --depth 1 $GRAVIS_REPO $GRAVIS
+  - source $GRAVIS/install-jdk
+
+
+install:
+  - true
+
 script:
-  - sh gradlew check
+  - travis_retry sh gradlew check
